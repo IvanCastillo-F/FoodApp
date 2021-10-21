@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/cocktailFragment"
+        android:icon="@drawable/ic_cooking_food"
+        android:orderInCategory="1"
+        android:title="@string/food_txt"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/favoriteFragment"
+        android:icon="@drawable/ic_blackheart"
+        android:orderInCategory="2"
+        android:title="@string/favourite_txt"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/accountFragment"
+        android:icon="@drawable/ic_account"
+        android:orderInCategory="3"
+        android:title="@string/account_txt"
+        app:showAsAction="always" />
+</menu>
