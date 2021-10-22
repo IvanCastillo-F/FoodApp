@@ -6,27 +6,61 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.alex_ia.myapplication.R
+import com.alex_ia.myapplication.core.extension.failure
+import com.alex_ia.myapplication.core.extension.observe
+import com.alex_ia.myapplication.core.presentation.BaseFragment
+import com.alex_ia.myapplication.core.presentation.BaseViewState
+import com.alex_ia.myapplication.databinding.FoodFragmentBinding
+import com.alex_ia.myapplication.domain.model.Food
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.WithFragmentBindings
+import kotlinx.coroutines.DelicateCoroutinesApi
 
-class FoodFragment : Fragment() {
+@AndroidEntryPoint
+@WithFragmentBindings
+@DelicateCoroutinesApi
+class FoodFragment : BaseFragment(R.layout.food_fragment) {
 
-    companion object {
-        fun newInstance() = FoodFragment()
+    private lateinit var binding: FoodFragmentBinding
+
+    private val adapter: FoodAdapter by lazy { FoodAdapter() }
+    private val cocktailViewModel by viewModels<FoodViewModel>()
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        cocktailViewModel.apply {
+            observe(state, ::onViewStateChanged)
+            failure(failure, ::handleFailure)
+
+            //doGetFoodByName("a")
+        }
     }
 
-    private lateinit var viewModel: FoodViewModel
+    override fun onViewStateChanged(state: BaseViewState?) {
+        super.onViewStateChanged(state)
+        when (state) {
+            is FoodViewState.FoodReceived -> setUpAdapter(state.meals)
+        }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.food_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun setUpAdapter(food : List<Food>) {
+        adapter.addList(food)
+
+        binding.rcFood.apply {
+            adapter = this@FoodFragment.adapter
+        }
+    }
+
+    override fun setBinding(view: View) {
+        binding = FoodFragmentBinding.bind(view)
+
+        binding.lifecycleOwner = this
+
+
     }
 
 }
