@@ -3,8 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/foodFragment2">
-
+    app:startDestination="@id/foodCategoryFragment">
+    <fragment
+        android:id="@+id/foodCategoryFragment"
+        android:name="com.alex_ia.myapplication.presentation.foodcategory.FoodCategoryFragment"
+        android:label="food_category_fragment"
+        tools:layout="@layout/food_category_fragment" />
     <fragment
         android:id="@+id/foodFragment2"
         android:name="com.alex_ia.myapplication.presentation.food.FoodFragment"

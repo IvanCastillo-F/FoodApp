@@ -7,25 +7,17 @@
         android:orderInCategory="1"
         android:title="@string/food_txt"
         app:showAsAction="always" />
-
-    <item
-        android:id="@+id/categoryFragment"
-        android:icon="@drawable/ic_category_icon"
-        android:orderInCategory="2"
-        android:title="@string/category_txt"
-        app:showAsAction="always" />
-
     <item
         android:id="@+id/favoriteFragment"
         android:icon="@drawable/ic_blackheart"
-        android:orderInCategory="3"
+        android:orderInCategory="2"
         android:title="@string/favourite_txt"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/accountFragment"
         android:icon="@drawable/ic_account"
-        android:orderInCategory="4"
+        android:orderInCategory="3"
         android:title="@string/account_txt"
         app:showAsAction="always" />
 </menu>

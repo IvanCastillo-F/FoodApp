@@ -5,6 +5,7 @@ import com.alex_ia.myapplication.data.api.FoodApi
 import com.alex_ia.myapplication.data.source.FoodRepositoryImpl
 import com.alex_ia.myapplication.domain.repository.FoodRepository
 import com.alex_ia.myapplication.framework.api.ApiProvider
+import com.alex_ia.myapplication.framework.db.FoodDb
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,9 +20,9 @@ object RepositoryModule {
     @Singleton
     fun provideFoodRepository(
         apiProvider: ApiProvider,
-       // foodDb: FoodDb,
+        foodDb: FoodDb,
         networkHandler: NetworkHandler
     ): FoodRepository =
-        FoodRepositoryImpl(apiProvider.getEndpoint(FoodApi::class.java), networkHandler = networkHandler/*, foodDao = cocktailDb.cocktailDao()*/)
+        FoodRepositoryImpl(apiProvider.getEndpoint(FoodApi::class.java), networkHandler = networkHandler, foodDao = foodDb.foodDao())
 
 }
