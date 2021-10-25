@@ -53,7 +53,9 @@ class FoodCategoryFragment : BaseFragment(R.layout.food_category_fragment) {
 
         adapter.addData(category)
 
-
+        adapter.listener = {
+            navController.navigate(FoodCategoryFragmentDirections.actionFoodCategoryFragmentToFoodFragment2(it))
+        }
 
         binding.rcCategoryFood.apply {
             adapter = this@FoodCategoryFragment.adapter

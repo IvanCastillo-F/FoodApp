@@ -5,17 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.alex_ia.myapplication.core.extension.loadFromURLCircular
+import com.alex_ia.myapplication.core.utils.LayoutType
 import com.alex_ia.myapplication.databinding.GridCategoryBinding
-import com.alex_ia.myapplication.databinding.RowFoodBinding
 import com.alex_ia.myapplication.domain.model.Category
-import com.alex_ia.myapplication.domain.model.Food
-import com.alex_ia.myapplication.presentation.food.FoodAdapter
 
 @SuppressLint("NotifyDataSetChanged")
 class CategoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
     private var list: MutableList<Category> = mutableListOf()
 
-    lateinit var listener: (food: Category) -> Unit
+    var layoutType = LayoutType.GRID
+
+    lateinit var listener: (category: Category) -> Unit
 
 
     fun addData(list: List<Category>) {
@@ -23,6 +24,9 @@ class CategoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
         notifyDataSetChanged()
     }
+
+
+    override fun getItemViewType(position: Int) = layoutType.ordinal
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolderItem(
         GridCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -41,6 +45,8 @@ class CategoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
         override fun bind(data: Category, listener: (meal: Category) -> Unit) {
             binding.item = data
+
+            binding.imgCategoryFood.loadFromURLCircular(data.urlThumb)
 
             binding.root.setOnClickListener {
                 listener(data)

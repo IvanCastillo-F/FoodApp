@@ -5,4 +5,5 @@
     <string name="food_txt">Food</string>
     <string name="account_txt">Account</string>
     <string name="category_txt">Category</string>
+    <string name="not_found_txt">Sorry, we cannot found your search.</string>
 </resources>

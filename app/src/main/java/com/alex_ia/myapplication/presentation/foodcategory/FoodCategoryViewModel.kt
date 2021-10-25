@@ -19,9 +19,9 @@ class FoodCategoryViewModel @Inject constructor(
     fun doGetAllCategories(name: String){
         getAllCategories(name) {
             it.fold(::handleFailure) {
-                state.value = CategoryViewState.CategoryReceived(it.category ?: listOf())
+                state.value = CategoryViewState.CategoryReceived(it.categories ?: listOf())
 
-                saveCategories(it.category ?: listOf())
+                saveCategories(it.categories ?: listOf())
 
                 true
         }

@@ -8,10 +8,38 @@
         android:id="@+id/foodCategoryFragment"
         android:name="com.alex_ia.myapplication.presentation.foodcategory.FoodCategoryFragment"
         android:label="food_category_fragment"
-        tools:layout="@layout/food_category_fragment" />
+        tools:layout="@layout/food_category_fragment" >
+        <action
+            android:id="@+id/action_foodCategoryFragment_to_foodFragment2"
+            app:destination="@id/foodFragment2"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+    </fragment>
     <fragment
         android:id="@+id/foodFragment2"
         android:name="com.alex_ia.myapplication.presentation.food.FoodFragment"
         android:label="food_fragment"
-        tools:layout="@layout/food_fragment" />
+        tools:layout="@layout/food_fragment" >
+        <action
+            android:id="@+id/action_foodFragment2_to_foodDetailFragment"
+            app:destination="@id/foodDetailFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+
+        <argument
+            android:name="category"
+            app:argType="com.alex_ia.myapplication.domain.model.Category" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodDetailFragment"
+        android:name="com.alex_ia.myapplication.presentation.fooddetail.FoodDetailFragment"
+        android:label="FoodDetailFragment" />
+
+    <argument
+        android:name="food"
+        app:argType="com.alex_ia.myapplication.domain.model.Food" />
 </navigation>

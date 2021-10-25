@@ -36,9 +36,14 @@
                 android:layout_height="0dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="10"
+                android:visibility="gone"
                 tools:listitem="@layout/row_food" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <include
+            android:id="@+id/emptyView"
+            layout="@layout/empty_view" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

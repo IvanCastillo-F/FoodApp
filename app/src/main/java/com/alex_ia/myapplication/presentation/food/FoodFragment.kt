@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.alex_ia.myapplication.R
 import com.alex_ia.myapplication.core.extension.failure
@@ -15,6 +16,7 @@ import com.alex_ia.myapplication.core.presentation.BaseFragment
 import com.alex_ia.myapplication.core.presentation.BaseViewState
 import com.alex_ia.myapplication.databinding.FoodFragmentBinding
 import com.alex_ia.myapplication.domain.model.Food
+import com.alex_ia.myapplication.presentation.foodcategory.FoodCategoryFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -49,9 +51,16 @@ class FoodFragment : BaseFragment(R.layout.food_fragment) {
     }
 
     private fun setUpAdapter(food : List<Food>) {
+        binding.emptyView.isVisible = food.isEmpty()
+
         adapter.addList(food)
 
+        adapter.listener = {
+            navController.navigate(FoodFragmentDirections.actionFoodFragment2ToFoodDetailFragment())
+        }
+
         binding.rcFood.apply {
+            isVisible = food.isNotEmpty()
             adapter = this@FoodFragment.adapter
         }
     }
