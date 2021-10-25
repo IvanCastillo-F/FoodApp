@@ -15,4 +15,8 @@ interface FoodRepository {
 
     fun saveCategories(meals: List<Category>): Either<Failure, Boolean>
 
+    fun getFoodByCategory(name: String): Either<Failure, FoodResponse>
+
+    fun getFoodByID(id: String): Either<Failure, FoodResponse>
+
 }

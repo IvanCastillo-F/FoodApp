@@ -37,9 +37,12 @@
     <fragment
         android:id="@+id/foodDetailFragment"
         android:name="com.alex_ia.myapplication.presentation.fooddetail.FoodDetailFragment"
-        android:label="FoodDetailFragment" />
+        android:label="FoodDetailFragment" >
 
-    <argument
-        android:name="food"
-        app:argType="com.alex_ia.myapplication.domain.model.Food" />
+        <argument
+            android:name="food"
+            app:argType="com.alex_ia.myapplication.domain.model.Food" />
+    </fragment>
+
+
 </navigation>

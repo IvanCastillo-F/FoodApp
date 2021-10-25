@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.alex_ia.myapplication.R
 import com.alex_ia.myapplication.core.extension.failure
 import com.alex_ia.myapplication.core.extension.observe
@@ -17,6 +18,7 @@ import com.alex_ia.myapplication.core.presentation.BaseViewState
 import com.alex_ia.myapplication.databinding.FoodFragmentBinding
 import com.alex_ia.myapplication.domain.model.Food
 import com.alex_ia.myapplication.presentation.foodcategory.FoodCategoryFragmentDirections
+import com.alex_ia.myapplication.presentation.fooddetail.FoodDetailFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -27,9 +29,12 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 class FoodFragment : BaseFragment(R.layout.food_fragment) {
 
     private lateinit var binding: FoodFragmentBinding
+    private val args : FoodFragmentArgs by navArgs()
+
 
     private val adapter: FoodAdapter by lazy { FoodAdapter() }
     private val foodViewModel by viewModels<FoodViewModel>()
+    private lateinit var search : String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +42,7 @@ class FoodFragment : BaseFragment(R.layout.food_fragment) {
         foodViewModel.apply {
             observe(state, ::onViewStateChanged)
             failure(failure, ::handleFailure)
-
-            //doGetFoodByName("a")
+            doGetFoodByCategory("")
         }
     }
 
@@ -56,7 +60,7 @@ class FoodFragment : BaseFragment(R.layout.food_fragment) {
         adapter.addList(food)
 
         adapter.listener = {
-            navController.navigate(FoodFragmentDirections.actionFoodFragment2ToFoodDetailFragment())
+            navController.navigate(FoodFragmentDirections.actionFoodFragment2ToFoodDetailFragment(it))
         }
 
         binding.rcFood.apply {
@@ -66,9 +70,17 @@ class FoodFragment : BaseFragment(R.layout.food_fragment) {
     }
 
     override fun setBinding(view: View) {
+
         binding = FoodFragmentBinding.bind(view)
 
+        binding.apply {
+            lifecycleOwner = this@FoodFragment
+            search = args.category.name
+        }
+
         binding.lifecycleOwner = this
+
+        foodViewModel.doGetFoodByCategory(search)
 
         binding.svFood.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 

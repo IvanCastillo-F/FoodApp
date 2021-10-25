@@ -51,4 +51,16 @@ class FoodRepositoryImpl @Inject constructor(
         return if (result.size == meals.size) Either.Right(true)
         else Either.Left(Failure.DatabaseError)
     }
+
+    override fun getFoodByCategory(name: String): Either<Failure, FoodResponse> {
+        val result = makeRequest(networkHandler, foodApi.getFoodByCategory(name), { it }, FoodResponse(emptyList()))
+
+        return result
+    }
+
+    override fun getFoodByID(id: String): Either<Failure, FoodResponse> {
+        val result = makeRequest(networkHandler, foodApi.getFoodByID(id), { it }, FoodResponse(emptyList()))
+
+        return result
+    }
 }

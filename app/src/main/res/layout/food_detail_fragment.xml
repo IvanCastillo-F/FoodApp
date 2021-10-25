@@ -1,77 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-        <variable
-            name="food"
-            type="com.alex_ia.myapplication.domain.model.Food" />
-
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".presentation.fooddetail.FoodDetailFragment">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imgFood"
-            loadFromUrl="@{food.urlDetail}"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_margin="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:src="@tools:sample/avatars" />
 
-        <ImageView
-            android:id="@+id/imgFavorite"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-          android:layout_margin="15dp"
-            android:src="@drawable/ic_heartoutline"
-            app:layout_constraintEnd_toEndOf="@id/imgFood"
-            app:layout_constraintTop_toTopOf="@id/imgFood" />
-
-        <TextView
-            android:id="@+id/txvName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="@{food.name}"
-            android:textAlignment="center"
-            android:textSize="27sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Enchiladas" />
-
-        <TextView
-            android:id="@+id/txvCategory"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{food.category}"
-            android:textAlignment="center"
-            android:layout_marginTop="20dp"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@id/imgFood"
-            app:layout_constraintTop_toBottomOf="@+id/txvName"
-            tools:text="Category" />
-
-        <TextView
-            android:id="@+id/txvInstructions"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swpRefresh"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="@{food.instructions}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/imgFood"
-            app:layout_constraintStart_toStartOf="@id/imgFood"
-            app:layout_constraintTop_toBottomOf="@id/imgFood"
-            tools:text="@tools:sample/lorem/random" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcDetailFood"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:itemCount="10"
+                tools:listitem="@layout/row_detailfood" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

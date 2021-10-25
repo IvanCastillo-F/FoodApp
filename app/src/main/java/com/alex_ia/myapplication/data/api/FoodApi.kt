@@ -14,4 +14,10 @@ interface FoodApi {
     @GET("json/v1/1/categories.php")
     fun getAllCategories(): Call<CategoryResponse>
 
+    @GET("json/v1/1/filter.php")
+    fun getFoodByCategory(@Query("c") name: String): Call<FoodResponse>
+
+    @GET("json/v1/1/lookup.php")
+    fun getFoodByID(@Query("i") id: String): Call<FoodResponse>
+
 }
