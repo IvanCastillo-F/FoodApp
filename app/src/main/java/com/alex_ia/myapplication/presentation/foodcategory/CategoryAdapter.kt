@@ -14,7 +14,6 @@ import com.alex_ia.myapplication.domain.model.Category
 class CategoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
     private var list: MutableList<Category> = mutableListOf()
 
-    var layoutType = LayoutType.GRID
 
     lateinit var listener: (category: Category) -> Unit
 
@@ -25,8 +24,6 @@ class CategoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
         notifyDataSetChanged()
     }
 
-
-    override fun getItemViewType(position: Int) = layoutType.ordinal
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolderItem(
         GridCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)

@@ -51,7 +51,7 @@ class FoodDetailFragment : BaseFragment(R.layout.food_detail_fragment) {
         adapter.listener = {
            it
         }
-        
+
         binding.rcDetailFood.apply {
             adapter = this@FoodDetailFragment.adapter
         }
@@ -61,6 +61,13 @@ class FoodDetailFragment : BaseFragment(R.layout.food_detail_fragment) {
         binding = FoodDetailFragmentBinding.bind(view)
 
         binding.lifecycleOwner = this
+
+        binding.fabRandom.setOnClickListener(){
+
+            foodDetailViewModel.doGetRandomFood("")
+
+        }
+
     }
 
 }

@@ -3,6 +3,7 @@ package com.alex_ia.myapplication.presentation.food
 import com.alex_ia.myapplication.core.presentation.BaseViewModel
 import com.alex_ia.myapplication.domain.usercase.GetFoodByName
 import com.alex_ia.myapplication.domain.usercase.GetFoodByCategory
+import com.alex_ia.myapplication.domain.usercase.GetRandomFood
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.DelicateCoroutinesApi
 import javax.inject.Inject

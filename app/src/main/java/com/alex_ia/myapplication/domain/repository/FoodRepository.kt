@@ -19,4 +19,6 @@ interface FoodRepository {
 
     fun getFoodByID(id: String): Either<Failure, FoodResponse>
 
+    fun getRandomFood():Either<Failure, FoodResponse>
+
 }

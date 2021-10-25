@@ -63,4 +63,9 @@ class FoodRepositoryImpl @Inject constructor(
 
         return result
     }
+
+    override fun getRandomFood(): Either<Failure, FoodResponse> {
+        val result = makeRequest(networkHandler, foodApi.getRandomFood(), { it }, FoodResponse(emptyList()))
+        return result
+    }
 }

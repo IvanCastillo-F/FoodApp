@@ -41,6 +41,7 @@
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+
         <include
             android:id="@+id/emptyView"
             layout="@layout/empty_view" />
