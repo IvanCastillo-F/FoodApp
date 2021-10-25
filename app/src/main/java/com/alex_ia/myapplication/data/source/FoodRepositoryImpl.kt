@@ -8,6 +8,7 @@ import com.alex_ia.myapplication.data.dao.FoodDao
 import com.alex_ia.myapplication.data.dto.CategoryResponse
 import com.alex_ia.myapplication.data.dto.FoodResponse
 import com.alex_ia.myapplication.domain.model.Category
+import com.alex_ia.myapplication.domain.model.Food
 import com.alex_ia.myapplication.domain.repository.FoodRepository
 import com.alex_ia.myapplication.framework.api.ApiRequest
 import javax.inject.Inject
@@ -22,14 +23,7 @@ class FoodRepositoryImpl @Inject constructor(
     override fun getFoodByName(name: String): Either<Failure, FoodResponse> {
         val result = makeRequest(networkHandler, foodApi.getFoodByName(name), { it }, FoodResponse(emptyList()))
 
-        return result/*if (result.isLeft) {
-
-            val localResult = foodDao.getfoodByName("%$name%")
-
-            if (localResult.isEmpty()) result
-            else Either.Right(FoodResponse(localResult))
-
-        } else*/ // result
+        return result
 
     }
 
@@ -58,6 +52,7 @@ class FoodRepositoryImpl @Inject constructor(
         return result
     }
 
+
     override fun getFoodByID(id: String): Either<Failure, FoodResponse> {
         val result = makeRequest(networkHandler, foodApi.getFoodByID(id), { it }, FoodResponse(emptyList()))
 
@@ -67,5 +62,11 @@ class FoodRepositoryImpl @Inject constructor(
     override fun getRandomFood(): Either<Failure, FoodResponse> {
         val result = makeRequest(networkHandler, foodApi.getRandomFood(), { it }, FoodResponse(emptyList()))
         return result
+    }
+
+    override fun saveFood(meals: List<Food>): Either<Failure, Boolean> {
+        val result = foodDao.saveFood(meals)
+        return if (result.size == meals.size) Either.Right(true)
+        else Either.Left(Failure.DatabaseError)
     }
 }

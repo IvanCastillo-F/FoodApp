@@ -5,6 +5,7 @@ import com.alex_ia.myapplication.core.functional.Either
 import com.alex_ia.myapplication.data.dto.CategoryResponse
 import com.alex_ia.myapplication.data.dto.FoodResponse
 import com.alex_ia.myapplication.domain.model.Category
+import com.alex_ia.myapplication.domain.model.Food
 import java.util.*
 
 interface FoodRepository {
@@ -20,5 +21,7 @@ interface FoodRepository {
     fun getFoodByID(id: String): Either<Failure, FoodResponse>
 
     fun getRandomFood():Either<Failure, FoodResponse>
+
+    fun saveFood(meals: List<Food>): Either<Failure, Boolean>
 
 }

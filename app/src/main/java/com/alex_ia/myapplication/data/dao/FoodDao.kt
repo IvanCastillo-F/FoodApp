@@ -11,9 +11,19 @@ interface FoodDao {
     fun getAllCategories(): List<Category>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveCategories(category: List<Category>): List<Long>
+    fun saveCategories(category: List<Category>) : List<Long>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveFood(food: List<Food>): List<Long>
+    fun saveFood(food: List<Food>) : List<Long>
+
+    @Query("SELECT * FROM Food WHERE name LIKE :food")
+    fun getFoodByName(food : String) : List<Food>
+
+    @Query("SELECT * FROM Food WHERE category LIKE :food")
+    fun getFoodByCategory(food : String) : List<Food>
+
+    @Query("SELECT * FROM Food WHERE idFood = :food")
+    fun getFoodByID(food : String): List<Food>
+
 
 }
