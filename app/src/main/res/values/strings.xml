@@ -6,4 +6,11 @@
     <string name="account_txt">Account</string>
     <string name="category_txt">Category</string>
     <string name="not_found_txt">Sorry, we cannot found your search.</string>
+    <string name="register_txt">If you dont have a account register now!!</string>
+    <string name="login_txt">LOGIN</string>
+    <string name="user_txt">Type your Username</string>
+    <string name="password_txt">Type your Password</string>
+    <string name="register_txt2">REGISTER</string>
+    <string name="mail_txt">Type your Mail Address</string>
+    <string name="link_txt">Paste the Link of an Image</string>
 </resources>

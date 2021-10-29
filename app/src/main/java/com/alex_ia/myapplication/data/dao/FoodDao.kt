@@ -25,5 +25,7 @@ interface FoodDao {
     @Query("SELECT * FROM Food WHERE idFood = :food")
     fun getFoodByID(food : String): List<Food>
 
+    @Query("SELECT * FROM Food ORDER BY RANDOM() LIMIT 1")
+    fun getRandomFood(): List<Food>
 
 }

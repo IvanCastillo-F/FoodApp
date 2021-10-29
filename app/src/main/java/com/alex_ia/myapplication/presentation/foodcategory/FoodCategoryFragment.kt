@@ -30,7 +30,6 @@ class FoodCategoryFragment : BaseFragment(R.layout.food_category_fragment) {
         categoryViewModel.apply {
             observe(state, ::onViewStateChanged)
             failure(failure, ::handleFailure)
-            doGetAllCategories("")
         }
     }
 
@@ -47,6 +46,8 @@ class FoodCategoryFragment : BaseFragment(R.layout.food_category_fragment) {
         binding.rcCategoryFood.layoutManager = GridLayoutManager(requireContext() ,2)
 
         binding.lifecycleOwner = this
+
+        categoryViewModel.doGetAllCategories("")
     }
 
     private fun setUpAdapter(category : List<Category>) {

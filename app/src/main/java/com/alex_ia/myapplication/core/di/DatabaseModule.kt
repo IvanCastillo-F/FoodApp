@@ -22,10 +22,17 @@ object DatabaseModule {
         }
     }
 
+    private val MIGRATION_2_3 = object : Migration(2, 3) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS User(idUser INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nameUser TEXT NOT NULL, mail TEXT NOT NULL, img TEXT NOT NULL, token TEXT )")
+        }
+    }
+
     @Provides
     @Singleton
     fun provideFoodDb(@ApplicationContext context: Context) =
         Room.databaseBuilder(context, FoodDb::class.java, "Category").addMigrations(
-            MIGRATION_1_2
+            MIGRATION_1_2,
+            MIGRATION_2_3
         ).build()
 }

@@ -23,7 +23,14 @@ class FoodRepositoryImpl @Inject constructor(
     override fun getFoodByName(name: String): Either<Failure, FoodResponse> {
         val result = makeRequest(networkHandler, foodApi.getFoodByName(name), { it }, FoodResponse(emptyList()))
 
-        return result
+        return if (result.isLeft) {
+
+            val localResult = foodDao.getFoodByName(name)
+
+            if (localResult.isEmpty()) result
+            else Either.Right(FoodResponse(localResult))
+
+        } else result
 
     }
 
@@ -49,19 +56,40 @@ class FoodRepositoryImpl @Inject constructor(
     override fun getFoodByCategory(name: String): Either<Failure, FoodResponse> {
         val result = makeRequest(networkHandler, foodApi.getFoodByCategory(name), { it }, FoodResponse(emptyList()))
 
-        return result
+        return if (result.isLeft) {
+
+            val localResult = foodDao.getFoodByCategory(name)
+
+            if (localResult.isEmpty()) result
+            else Either.Right(FoodResponse(localResult))
+
+        } else result
     }
 
 
     override fun getFoodByID(id: String): Either<Failure, FoodResponse> {
         val result = makeRequest(networkHandler, foodApi.getFoodByID(id), { it }, FoodResponse(emptyList()))
 
-        return result
+        return if (result.isLeft) {
+
+            val localResult = foodDao.getFoodByID(id)
+
+            if (localResult.isEmpty()) result
+            else Either.Right(FoodResponse(localResult))
+
+        } else result
     }
 
     override fun getRandomFood(): Either<Failure, FoodResponse> {
         val result = makeRequest(networkHandler, foodApi.getRandomFood(), { it }, FoodResponse(emptyList()))
-        return result
+        return if (result.isLeft) {
+
+            val localResult = foodDao.getRandomFood()
+
+            if (localResult.isEmpty()) result
+            else Either.Right(FoodResponse(localResult))
+
+        } else result
     }
 
     override fun saveFood(meals: List<Food>): Either<Failure, Boolean> {
