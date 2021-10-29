@@ -50,6 +50,10 @@ class LoginFragment : BaseFragment(R.layout.login_fragment) {
             binding.ivUser.loadFromURLCircular(User(nameUser = (it ?: "").toString()).getImage())
         }
 
+        binding.txvGoToRegister.setOnClickListener {
+            showMessege("Sorry this service is not available at the moment")
+        }
+
         binding.lifecycleOwner = this
     }
 
