@@ -7,11 +7,20 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.alex_ia.myapplication.core.exception.Failure
+import com.alex_ia.myapplication.core.plataform.AuthManager
+import com.alex_ia.myapplication.domain.model.User
 
 abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), OnFailure {
 
     val navController by lazy { findNavController() }
     val baseActivity by lazy { requireActivity() as BaseActivity }
+    private lateinit var authManager: AuthManager
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        authManager = AuthManager(requireContext())
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -20,6 +29,12 @@ abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), OnFa
 
         setBinding(view)
     }
+
+    var loggedUser: User
+        set(value) {
+            authManager.user = value
+        }
+        get() = authManager.user!!
 
     abstract fun setBinding(view: View)
 

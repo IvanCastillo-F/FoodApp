@@ -13,4 +13,6 @@
     <string name="register_txt2">REGISTER</string>
     <string name="mail_txt">Type your Mail Address</string>
     <string name="link_txt">Paste the Link of an Image</string>
+    <string name="logout_txt">LOGOUT</string>
+    <string name="welcome_txt">Welcome to Food App</string>
 </resources>
