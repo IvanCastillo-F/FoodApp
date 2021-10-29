@@ -34,7 +34,13 @@ abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), OnFa
         set(value) {
             authManager.user = value
         }
-        get() = authManager.user!!
+        get() {
+            if(authManager.user == null){
+                return User(-1,"","","","")
+            }else{
+            return authManager.user!!
+            }
+        }
 
     abstract fun setBinding(view: View)
 
