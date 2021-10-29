@@ -12,6 +12,6 @@ import com.alex_ia.myapplication.core.presentation.BaseFragment
 class RegisterFragment : BaseFragment(R.layout.register_fragment) {
 
     override fun setBinding(view: View) {
-        TODO("Not yet implemented")
+
     }
 }

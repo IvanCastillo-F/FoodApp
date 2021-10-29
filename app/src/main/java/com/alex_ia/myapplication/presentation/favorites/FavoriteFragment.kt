@@ -1,4 +1,4 @@
-package com.alex_ia.myapplication.presentation.login
+package com.alex_ia.myapplication.presentation.favorites
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,10 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import com.alex_ia.myapplication.R
 import com.alex_ia.myapplication.core.presentation.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.WithFragmentBindings
+import kotlinx.coroutines.DelicateCoroutinesApi
 
-class LoginFragment : BaseFragment(R.layout.login_fragment) {
+@DelicateCoroutinesApi
+@AndroidEntryPoint
+@WithFragmentBindings
+class FavoriteFragment : BaseFragment(R.layout.favorite_fragment) {
 
     override fun setBinding(view: View) {
 
     }
+
 }

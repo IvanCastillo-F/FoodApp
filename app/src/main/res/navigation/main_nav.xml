@@ -8,7 +8,7 @@
         android:id="@+id/foodCategoryFragment"
         android:name="com.alex_ia.myapplication.presentation.foodcategory.FoodCategoryFragment"
         android:label="food_category_fragment"
-        tools:layout="@layout/food_category_fragment" >
+        tools:layout="@layout/food_category_fragment">
         <action
             android:id="@+id/action_foodCategoryFragment_to_foodFragment2"
             app:destination="@id/foodFragment2"
@@ -43,6 +43,34 @@
             android:name="food"
             app:argType="com.alex_ia.myapplication.domain.model.Food" />
     </fragment>
+    <fragment
+        android:id="@+id/accountFragment2"
+        android:name="com.alex_ia.myapplication.presentation.account.AccountFragment"
+        android:label="account_fragment"
+        tools:layout="@layout/account_fragment" >
+        <action
+            android:id="@+id/action_accountFragment2_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.alex_ia.myapplication.presentation.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.alex_ia.myapplication.presentation.register.RegisterFragment"
+        android:label="register_fragment"
+        tools:layout="@layout/register_fragment" />
+    <fragment
+        android:id="@+id/favoriteFragment2"
+        android:name="com.alex_ia.myapplication.presentation.favorites.FavoriteFragment"
+        android:label="favorite_fragment"
+        tools:layout="@layout/favorite_fragment" />
 
 
 </navigation>

@@ -5,8 +5,11 @@
       <map>
         <entry key="..\:/Users/maste/Documents/Universidad/Android/FoodApp/app/src/main/res/drawable/ic_cooking_food.xml" value="0.23703703703703705" />
         <entry key="..\:/Users/maste/Documents/Universidad/Android/FoodApp/app/src/main/res/drawable/ic_hand.xml" value="0.2537037037037037" />
+        <entry key="..\:/Users/maste/Documents/Universidad/Android/FoodApp/app/src/main/res/drawable/ic_heartoutline.xml" value="0.14895833333333333" />
+        <entry key="..\:/Users/maste/Documents/Universidad/Android/FoodApp/app/src/main/res/layout/account_fragment.xml" value="0.1328125" />
         <entry key="..\:/Users/maste/Documents/Universidad/Android/FoodApp/app/src/main/res/layout/activity_main.xml" value="0.22735507246376813" />
         <entry key="..\:/Users/maste/Documents/Universidad/Android/FoodApp/app/src/main/res/layout/empty_view.xml" value="0.25226449275362317" />
+        <entry key="..\:/Users/maste/Documents/Universidad/Android/FoodApp/app/src/main/res/layout/favorite_fragment.xml" value="0.1328125" />
         <entry key="..\:/Users/maste/Documents/Universidad/Android/FoodApp/app/src/main/res/layout/food_category_fragment.xml" value="0.21739130434782608" />
         <entry key="..\:/Users/maste/Documents/Universidad/Android/FoodApp/app/src/main/res/layout/food_detail_fragment.xml" value="0.25226449275362317" />
         <entry key="..\:/Users/maste/Documents/Universidad/Android/FoodApp/app/src/main/res/layout/food_fragment.xml" value="0.22735507246376813" />
